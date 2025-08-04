@@ -1,0 +1,67 @@
+[project]
+name = "mcpry"
+version = "0.0.0"
+description = "A command-line tool for analyzing MCP servers."
+readme = "README.md"
+license = "MIT"
+authors = [
+    { name = "Pangea", email = "support@pangea.cloud" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "fastmcp>=2.10.6",
+    "mcp>=1.12.2",
+    "pangea-sdk>=6.3.0",
+    "pydantic>=2.11.7",
+    "cyclopts>=3.22.3",
+    "pyjson5>=1.6.9",
+    "rich>=14.1.0",
+    "fastembed>=0.7.1",
+    "scipy>=1.16.1",
+]
+
+[dependency-groups]
+dev = [
+    "mypy==1.17.0",
+    "ruff==0.12.5",
+]
+gpu = [
+    "fastembed-gpu>=0.7.1",
+]
+
+[project.scripts]
+mcpry = "mcpry:app"
+
+[build-system]
+requires = ["uv_build==0.8.3"]
+build-backend = "uv_build"
+
+[tool.mypy]
+plugins = ["pydantic.mypy"]
+disallow_any_generics = true
+disallow_untyped_defs = true
+follow_imports = "silent"
+no_implicit_reexport = false
+warn_redundant_casts = true
+warn_unused_ignores = true
+
+[tool.pydantic-mypy]
+init_forbid_extra = true
+init_typed = true
+warn_required_dynamic_aliases = true
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "F",
+    "I",   # isort
+    "PTH", # flake8-use-pathlib
+    "SIM", # flake8-simplify
+    "TC",  # flake8-type-checking
+    "UP",  # pyupgrade
+]
+flake8-type-checking.runtime-evaluated-base-classes = ["pydantic.BaseModel", "mcp.types.Tool"]
