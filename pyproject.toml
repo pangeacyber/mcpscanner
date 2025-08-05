@@ -23,7 +23,7 @@ dependencies = [
 [dependency-groups]
 dev = [
     "mypy==1.17.1",
-    "ruff==0.12.5",
+    "ruff==0.12.7",
 ]
 gpu = [
     "fastembed-gpu>=0.7.1",
