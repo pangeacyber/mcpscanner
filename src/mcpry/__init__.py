@@ -187,7 +187,7 @@ async def analyze(mcp_server: StdioMCPServer | RemoteMCPServer, ai_guard: AIGuar
                     tools=tools,
                     resources=resources,
                     requires_auth=maybe_requires_auth,
-                    error_message=f"Pangea AI Guard returned an error when guarding the tools list (HTTP/{error.response.http_status}).",
+                    error_message=f"Pangea AI Guard returned an error when guarding the tools list (HTTP/{error.response.http_status}).",  # noqa: E501
                 )
 
             if any(guard_result.blocked for guard_result in guard_results):
@@ -292,7 +292,7 @@ async def scan(
         reports.append(report)
 
         diff: Syntax | None = None
-        if previous_report := next((report for report in existing_reports if report.name == report.name), None):
+        if previous_report := next((report for report in existing_reports if report.name == report.name), None):  # noqa: SIM102
             if previous_report.fingerprint() != report.fingerprint():
                 expected = previous_report.model_dump_json(
                     indent=2, include={"name", "tools", "resources"}, exclude_none=True
