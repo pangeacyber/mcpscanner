@@ -15,6 +15,8 @@ servers. It does the following:
    with a previous report and display a diff if any changes are detected.
 6. **Finds Similar Tools**: It can identify tools with similar functionality.
 
+![Sample output](./.github/assets/sample.png)
+
 ## Installation
 
 ```bash
