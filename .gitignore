@@ -11,4 +11,4 @@ wheels/
 
 node_modules
 .env
-mcpry.json
+mcpscanner.json
