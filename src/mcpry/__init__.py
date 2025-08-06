@@ -191,13 +191,26 @@ async def analyze(mcp_server: StdioMCPServer | RemoteMCPServer, ai_guard: AIGuar
                 )
 
             if any(guard_result.blocked for guard_result in guard_results):
+                malicious_prompt = any(
+                    guard_result.detectors.prompt_injection is not None for guard_result in guard_results
+                )
+                malicious_entity = any(
+                    guard_result.detectors.malicious_entity is not None for guard_result in guard_results
+                )
                 return McpServerReport(
                     transport_type=mcp_server.transport,
                     name=server_info.name,
                     tools=tools,
                     resources=resources,
                     requires_auth=maybe_requires_auth,
-                    error_message="The tools list was blocked by Pangea AI Guard.",
+                    error_message="The tools list was blocked by Pangea AI Guard because of "
+                    + (
+                        "malicious prompt and malicious entity"
+                        if malicious_prompt and malicious_entity
+                        else "malicious prompt"
+                        if malicious_prompt
+                        else "malicious entity"
+                    ),
                 )
     except httpx.HTTPStatusError as error:
         return McpServerReport(
@@ -235,9 +248,7 @@ app = cyclopts.App(name="mcpry", version=__version__)
 
 @app.command
 async def scan(
-    input: Annotated[cyclopts.types.ExistingJsonPath, cyclopts.Parameter("--input", help="Input file.")] = Path(
-        "mcpry.json"
-    ),
+    input: Annotated[cyclopts.types.JsonPath, cyclopts.Parameter("--input", help="Input file.")] = Path("mcpry.json"),
     output: Annotated[cyclopts.types.JsonPath, cyclopts.Parameter("--output", help="Output file.")] = Path(
         "mcpry.json"
     ),
@@ -279,6 +290,8 @@ async def scan(
             console.print(f"  - {server_display_name(server)} (remote)")
     console.print()
 
+    logging.getLogger("mcp").setLevel(logging.CRITICAL)
+
     logging.getLogger("pangea").setLevel(logging.CRITICAL)
     ai_guard = AIGuard(token=pangea_ai_guard_token, logger_name="pangea")
 
@@ -292,15 +305,19 @@ async def scan(
         reports.append(report)
 
         diff: Syntax | None = None
-        if previous_report := next((report for report in existing_reports if report.name == report.name), None):  # noqa: SIM102
-            if previous_report.fingerprint() != report.fingerprint():
-                expected = previous_report.model_dump_json(
-                    indent=2, include={"name", "tools", "resources"}, exclude_none=True
-                )
-                actual = report.model_dump_json(indent=2, include={"name", "tools", "resources"}, exclude_none=True)
-                diff = pretty_unified_diff(expected, actual, syntax_theme)
+        if (
+            previous_report := next(
+                (existing_report for existing_report in existing_reports if existing_report.name == report.name), None
+            )
+        ) and previous_report.fingerprint() != report.fingerprint():
+            expected = previous_report.model_dump_json(
+                indent=2, include={"name", "tools", "resources"}, exclude_none=True
+            )
+            actual = report.model_dump_json(indent=2, include={"name", "tools", "resources"}, exclude_none=True)
+            diff = pretty_unified_diff(expected, actual, syntax_theme)
 
         tool_to_entities = {tool.name: find_entities(tool, ai_guard) for tool in report.tools}
+        tool_to_entities = {tool: entities for tool, entities in tool_to_entities.items() if len(entities) > 0}
 
         def report_generator() -> Generator[RenderableType, None, None]:
             yield Text(report.name, style="bold")
