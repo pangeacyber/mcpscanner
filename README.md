@@ -1,6 +1,7 @@
-# mcpry
+# MCPScanner
 
-`mcpry` is a command-line tool for analyzing MCP servers. It does the following:
+MCPScanner (formerly known as `mcpry`) is a command-line tool for analyzing MCP
+servers. It does the following:
 
 1. **Discovers MCP Servers**: It automatically searches for MCP server
    configuration files in well-known locations on the host system.
@@ -8,7 +9,7 @@
    fetch the list of available tools and resources.
 3. **Security Scanning with [Pangea AI Guard][]**: It uses the Pangea AI Guard
    service to scan the tools for malicious entities and prompts.
-4. **Generates Reports**: It creates a JSON report (default `mcpry.json`)
+4. **Generates Reports**: It creates a JSON report (default `mcpscanner.json`)
    containing the analysis results.
 5. **Detects Changes**: It can compare the current state of a server's tools
    with a previous report and display a diff if any changes are detected.
@@ -17,12 +18,12 @@
 ## Installation
 
 ```bash
-pip install -U mcpry
+pip install -U mcpscanner
 ```
 
 ## Configuration
 
-Before using `mcpry`, you need to set the `PANGEA_AI_GUARD_TOKEN` environment
+Before using MCPScanner, you need to set the `PANGEA_AI_GUARD_TOKEN` environment
 variable to a [Pangea API token][Pangea API token] that has access to the Pangea
 AI Guard service.
 
@@ -35,15 +36,15 @@ export PANGEA_AI_GUARD_TOKEN="pts_your_token_here"
 The primary command is `scan`, which runs the analysis.
 
 ```bash
-mcpry scan
+mcpscanner scan
 ```
 
 ### Options
 
 | Parameter                        | Description                                                                      | Default                                                     |
 | -------------------------------- | -------------------------------------------------------------------------------- | ----------------------------------------------------------- |
-| `--input <PATH>`                 | The input file containing a previous report to compare against.                  | `mcpry.json`                                                |
-| `--output <PATH>`                | The file where the new report will be saved.                                     | `mcpry.json`                                                |
+| `--input <PATH>`                 | The input file containing a previous report to compare against.                  | `mcpscanner.json`                                           |
+| `--output <PATH>`                | The file where the new report will be saved.                                     | `mcpscanner.json`                                           |
 | `--list-tools`                   | If set, the names of all tools for each MCP server will be listed in the output. | `False`                                                     |
 | `--mcp-config-files <FILES>`     | A list of files to discover MCP servers from.                                    | A list of well-known paths for different operating systems. |
 | `--similarity-threshold <FLOAT>` | The threshold (between 0.0 and 1.0) for two tools to be considered similar.      | `0.96`                                                      |

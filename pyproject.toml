@@ -1,5 +1,5 @@
 [project]
-name = "mcpry"
+name = "mcpscanner"
 version = "0.2.0"
 description = "A command-line tool for analyzing MCP servers."
 readme = "README.md"
@@ -31,7 +31,7 @@ gpu = [
 ]
 
 [project.scripts]
-mcpry = "mcpry:app"
+mcpscanner = "mcpscanner:app"
 
 [build-system]
 requires = ["uv_build==0.8.4"]

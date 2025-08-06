@@ -243,14 +243,16 @@ def pretty_unified_diff(expected_json: str, actual_json: str, syntax_theme: str 
 
 
 console = Console()
-app = cyclopts.App(name="mcpry", version=__version__)
+app = cyclopts.App(name="mcpscanner", version=__version__)
 
 
 @app.command
 async def scan(
-    input: Annotated[cyclopts.types.JsonPath, cyclopts.Parameter("--input", help="Input file.")] = Path("mcpry.json"),
+    input: Annotated[cyclopts.types.JsonPath, cyclopts.Parameter("--input", help="Input file.")] = Path(
+        "mcpscanner.json"
+    ),
     output: Annotated[cyclopts.types.JsonPath, cyclopts.Parameter("--output", help="Output file.")] = Path(
-        "mcpry.json"
+        "mcpscanner.json"
     ),
     list_tools: Annotated[
         bool, cyclopts.Parameter("--list-tools", help="Whether or not to list the tools of each MCP server.")
