@@ -203,7 +203,7 @@ async def analyze(mcp_server: StdioMCPServer | RemoteMCPServer, ai_guard: AIGuar
                     tools=tools,
                     resources=resources,
                     requires_auth=maybe_requires_auth,
-                    error_message="The tools list was blocked by Pangea AI Guard because of "
+                    error_message="Finding: "
                     + (
                         "malicious prompt and malicious entity"
                         if malicious_prompt and malicious_entity
@@ -345,7 +345,7 @@ async def scan(
 
             if report.error_message:
                 yield Text()
-                yield Text(f"Error: {report.error_message}", style="yellow")
+                yield Text(report.error_message, style="red")
 
             if diff:
                 yield diff
