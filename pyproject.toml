@@ -27,7 +27,7 @@ dev = [
     "scipy-stubs==1.16.1.1",
 ]
 gpu = [
-    "fastembed-gpu>=0.7.1",
+    "fastembed-gpu>=0.7.3",
 ]
 
 [project.scripts]
