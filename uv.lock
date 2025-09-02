@@ -980,7 +980,7 @@ gpu = [
 
 [package.metadata]
 requires-dist = [
-    { name = "cyclopts", specifier = ">=3.23.0" },
+    { name = "cyclopts", specifier = ">=3.23.1" },
     { name = "fastembed", specifier = ">=0.7.3" },
     { name = "fastmcp", specifier = ">=2.11.3" },
     { name = "mcp", specifier = ">=1.13.1" },
