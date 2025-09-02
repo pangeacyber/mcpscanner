@@ -995,7 +995,7 @@ requires-dist = [
 dev = [
     { name = "mypy", specifier = "==1.17.1" },
     { name = "ruff", specifier = "==0.12.11" },
-    { name = "scipy-stubs", specifier = "==1.16.1.0" },
+    { name = "scipy-stubs", specifier = "==1.16.1.1" },
 ]
 gpu = [{ name = "fastembed-gpu", specifier = ">=0.7.1" }]
 
@@ -2316,14 +2316,14 @@ wheels = [
 
 [[package]]
 name = "scipy-stubs"
-version = "1.16.1.0"
+version = "1.16.1.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "optype", extra = ["numpy"] },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/e5/27/bc9a81cabc1cb24aca77d221d70e9d62677b984da9a20292511b80183895/scipy_stubs-1.16.1.0.tar.gz", hash = "sha256:4251c10d0a0a47b54916c49f62cc7b411ab0f7b78ea3946a156990110982d6d9", size = 344964, upload-time = "2025-08-01T02:41:57.245Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/ab/7e/978c7cad40405cb927d065c31bfaefbc09b4f6cf1ce97e4af6625b1935ab/scipy_stubs-1.16.1.1.tar.gz", hash = "sha256:5b36fdcc1a66cc530c08917fa7c7499ec7a607487735419c677742dcf25803fb", size = 347578, upload-time = "2025-08-21T00:57:31.306Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/46/1b/9afd7b859c3067845631c65bff8a1ffa59de122e0af121ff17c476f625cd/scipy_stubs-1.16.1.0-py3-none-any.whl", hash = "sha256:6ce677a485391012cbcc0e28897b5dd6031a1b5dda40b2ceecbbc5d4f9cc03d5", size = 551168, upload-time = "2025-08-01T02:41:55.387Z" },
+    { url = "https://files.pythonhosted.org/packages/fa/1b/8c2b4f0e957ad23d30419c01e9ef874284c09ceb942daf3a6546ffd51e6e/scipy_stubs-1.16.1.1-py3-none-any.whl", hash = "sha256:8c3e98a5a7def79570cbd6e2f4316da570d48b7945a630ac016b199d12c31918", size = 553763, upload-time = "2025-08-21T00:57:27.649Z" },
 ]
 
 [[package]]

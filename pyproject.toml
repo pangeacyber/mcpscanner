@@ -24,7 +24,7 @@ dependencies = [
 dev = [
     "mypy==1.17.1",
     "ruff==0.12.11",
-    "scipy-stubs==1.16.1.0",
+    "scipy-stubs==1.16.1.1",
 ]
 gpu = [
     "fastembed-gpu>=0.7.1",
