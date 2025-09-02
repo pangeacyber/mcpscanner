@@ -997,7 +997,7 @@ dev = [
     { name = "ruff", specifier = "==0.12.11" },
     { name = "scipy-stubs", specifier = "==1.16.1.0" },
 ]
-gpu = [{ name = "fastembed-gpu", specifier = ">=0.7.1" }]
+gpu = [{ name = "fastembed-gpu", specifier = ">=0.7.3" }]
 
 [[package]]
 name = "mdurl"
