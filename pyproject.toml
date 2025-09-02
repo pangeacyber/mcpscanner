@@ -10,7 +10,7 @@ authors = [
 requires-python = ">=3.11"
 dependencies = [
     "cyclopts>=3.23.0",
-    "fastembed>=0.7.1",
+    "fastembed>=0.7.3",
     "fastmcp>=2.11.3",
     "mcp>=1.13.1",
     "pangea-sdk>=6.4.0",
