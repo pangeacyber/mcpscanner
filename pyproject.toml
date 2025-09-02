@@ -9,7 +9,7 @@ authors = [
 ]
 requires-python = ">=3.11"
 dependencies = [
-    "cyclopts>=3.22.5",
+    "cyclopts>=3.23.0",
     "fastembed>=0.7.1",
     "fastmcp>=2.11.3",
     "mcp>=1.13.0",
