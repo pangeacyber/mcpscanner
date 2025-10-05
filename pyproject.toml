@@ -23,7 +23,7 @@ dependencies = [
 [dependency-groups]
 dev = [
     "mypy==1.18.1",
-    "ruff==0.13.0",
+    "ruff==0.13.3",
     "scipy-stubs==1.16.2.0",
 ]
 gpu = [
