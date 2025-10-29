@@ -33,6 +33,15 @@ AI Guard service.
 export PANGEA_AI_GUARD_TOKEN="pts_your_token_here"
 ```
 
+### Pangea domain
+
+To use a Pangea domain other than the default `aws.us.pangea.cloud`, set the
+`PANGEA_DOMAIN` environment variable.
+
+```bash
+export PANGEA_DOMAIN="aws.us-west-2.pangea.cloud"
+```
+
 ## Usage
 
 The primary command is `scan`, which runs the analysis.
