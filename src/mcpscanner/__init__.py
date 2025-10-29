@@ -21,6 +21,7 @@ from fastmcp.client.transports import StdioTransport
 from fastmcp.mcp_config import MCPConfig, RemoteMCPServer, StdioMCPServer
 from mcp import McpError
 from mcp.types import INTERNAL_ERROR, METHOD_NOT_FOUND, Resource, Tool
+from pangea import PangeaConfig
 from pangea.exceptions import PangeaAPIException, ValidationException
 from pangea.services import AIGuard
 from pangea.services.ai_guard import (
@@ -295,7 +296,11 @@ async def scan(
     logging.getLogger("mcp").setLevel(logging.CRITICAL)
 
     logging.getLogger("pangea").setLevel(logging.CRITICAL)
-    ai_guard = AIGuard(token=pangea_ai_guard_token, logger_name="pangea")
+    ai_guard = AIGuard(
+        token=pangea_ai_guard_token,
+        config=PangeaConfig(domain=os.getenv("PANGEA_DOMAIN", "aws.us.pangea.cloud")),
+        logger_name="pangea",
+    )
 
     existing_reports = (
         [McpServerReport(**report) for report in pyjson5.loads(input.read_text("utf-8"))] if input.exists() else []
