@@ -25,12 +25,13 @@ from pangea import PangeaConfig
 from pangea.exceptions import PangeaAPIException, ValidationException
 from pangea.services import AIGuard
 from pangea.services.ai_guard import (
+    GuardResult,
     MaliciousEntityOverride,
+    MaliciousPromptOverride,
     Message,
     Overrides,
+    Overrides2,
     PiiEntityOverride,
-    PromptInjectionOverride,
-    TextGuardResult,
 )
 from pydantic import BaseModel, ConfigDict, Field
 from pydantic_core import to_json
@@ -103,16 +104,16 @@ class McpServerReport(BaseModel):
         return sri_hash(self.model_dump_json(include={"name", "tools", "resources"}, exclude_none=True))
 
 
-def ai_guard_tools(tools: Sequence[Tool], ai_guard: AIGuard) -> list[TextGuardResult]:
+def ai_guard_tools(tools: Sequence[Tool], ai_guard: AIGuard) -> list[GuardResult]:
     try:
-        guard_response = ai_guard.guard_text(
-            messages=[Message(role="user", content=tool.model_dump_json(exclude_none=True)) for tool in tools],
-            overrides=Overrides(
+        guard_response = ai_guard.guard(
+            input={"messages": [], "tools": [tool.model_dump(exclude_none=True) for tool in tools]},
+            overrides=Overrides2(
                 ignore_recipe=True,
                 malicious_entity=MaliciousEntityOverride(
                     disabled=False, domain="block", ip_address="block", url="block"
                 ),
-                prompt_injection=PromptInjectionOverride(disabled=False, action="block"),
+                malicious_prompt=MaliciousPromptOverride(disabled=False, action="block"),
             ),
         )
         return [guard_response.result] if guard_response.result is not None else []
@@ -193,10 +194,14 @@ async def analyze(mcp_server: StdioMCPServer | RemoteMCPServer, ai_guard: AIGuar
 
             if any(guard_result.blocked for guard_result in guard_results):
                 malicious_prompt = any(
-                    guard_result.detectors.prompt_injection is not None for guard_result in guard_results
+                    guard_result.detectors.malicious_prompt is not None
+                    and guard_result.detectors.malicious_prompt.detected
+                    for guard_result in guard_results
                 )
                 malicious_entity = any(
-                    guard_result.detectors.malicious_entity is not None for guard_result in guard_results
+                    guard_result.detectors.malicious_entity is not None
+                    and guard_result.detectors.malicious_entity.detected
+                    for guard_result in guard_results
                 )
                 return McpServerReport(
                     transport_type=mcp_server.transport,
@@ -268,6 +273,10 @@ async def scan(
     syntax_theme: Annotated[
         str, cyclopts.Parameter("--syntax-theme", help="Syntax theme for JSON diffs.")
     ] = "github-dark",
+    poll_result_timeout: Annotated[
+        cyclopts.types.PositiveInt,
+        cyclopts.Parameter("--poll-result-timeout", help="Timeout (seconds) for polling AI Guard results."),
+    ] = 30,
 ) -> None:
     pangea_ai_guard_token = os.getenv("PANGEA_AI_GUARD_TOKEN")
     if not pangea_ai_guard_token:
@@ -298,7 +307,9 @@ async def scan(
     logging.getLogger("pangea").setLevel(logging.CRITICAL)
     ai_guard = AIGuard(
         token=pangea_ai_guard_token,
-        config=PangeaConfig(domain=os.getenv("PANGEA_DOMAIN", "aws.us.pangea.cloud")),
+        config=PangeaConfig(
+            domain=os.getenv("PANGEA_DOMAIN", "aws.us.pangea.cloud"), poll_result_timeout=poll_result_timeout
+        ),
         logger_name="pangea",
     )
 
