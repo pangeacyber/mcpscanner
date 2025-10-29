@@ -60,6 +60,7 @@ mcpscanner scan
 | `--mcp-config-files <FILES>`     | A list of files to discover MCP servers from.                                    | A list of well-known paths for different operating systems. |
 | `--similarity-threshold <FLOAT>` | The threshold (between 0.0 and 1.0) for two tools to be considered similar.      | `0.96`                                                      |
 | `--syntax-theme <THEME>`         | The syntax theme to use for displaying JSON diffs.                               | `github-dark`                                               |
+| `--poll-result-timeout`          | Timeout (seconds) for polling AI Guard results.                                  | `30`                                                        |
 
 [Pangea AI Guard]: https://pangea.cloud/docs/ai-guard/
 [Pangea API token]: https://pangea.cloud/docs/admin-guide/projects/credentials#service-tokens
