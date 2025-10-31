@@ -1078,7 +1078,7 @@ requires-dist = [
     { name = "pydantic", specifier = ">=2.12.3" },
     { name = "pyjson5", specifier = ">=2.0.0" },
     { name = "rich", specifier = ">=14.2.0" },
-    { name = "scipy", specifier = ">=1.16.2" },
+    { name = "scipy", specifier = ">=1.16.3" },
 ]
 
 [package.metadata.requires-dev]
