@@ -466,14 +466,14 @@ wheels = [
 
 [[package]]
 name = "deprecated"
-version = "1.2.18"
+version = "1.3.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "wrapt" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/98/97/06afe62762c9a8a86af0cfb7bfdab22a43ad17138b07af5b1a58442690a2/deprecated-1.2.18.tar.gz", hash = "sha256:422b6f6d859da6f2ef57857761bfb392480502a64c3028ca9bbe86085d72115d", size = 2928744, upload-time = "2025-01-27T10:46:25.7Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/49/85/12f0a49a7c4ffb70572b6c2ef13c90c88fd190debda93b23f026b25f9634/deprecated-1.3.1.tar.gz", hash = "sha256:b1b50e0ff0c1fddaa5708a2c6b0a6588bb09b892825ab2b214ac9ea9d92a5223", size = 2932523, upload-time = "2025-10-30T08:19:02.757Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/6e/c6/ac0b6c1e2d138f1002bcf799d330bd6d85084fece321e662a14223794041/Deprecated-1.2.18-py2.py3-none-any.whl", hash = "sha256:bd5011788200372a32418f888e326a09ff80d0214bd961147cfed01b5c018eec", size = 9998, upload-time = "2025-01-27T10:46:09.186Z" },
+    { url = "https://files.pythonhosted.org/packages/84/d0/205d54408c08b13550c733c4b85429e7ead111c7f0014309637425520a9a/deprecated-1.3.1-py2.py3-none-any.whl", hash = "sha256:597bfef186b6f60181535a29fbe44865ce137a5079f295b479886c82729d5f3f", size = 11298, upload-time = "2025-10-30T08:19:00.758Z" },
 ]
 
 [[package]]
@@ -1074,7 +1074,7 @@ requires-dist = [
     { name = "fastembed", specifier = ">=0.7.3" },
     { name = "fastmcp", specifier = ">=2.13.0" },
     { name = "mcp", specifier = ">=1.19.0" },
-    { name = "pangea-sdk", specifier = ">=6.10.0" },
+    { name = "pangea-sdk", specifier = ">=6.11.0" },
     { name = "pydantic", specifier = ">=2.12.3" },
     { name = "pyjson5", specifier = ">=2.0.0" },
     { name = "rich", specifier = ">=14.2.0" },
@@ -1564,7 +1564,7 @@ wheels = [
 
 [[package]]
 name = "pangea-sdk"
-version = "6.10.0"
+version = "6.11.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "aiohttp" },
@@ -1578,9 +1578,9 @@ dependencies = [
     { name = "typing-extensions" },
     { name = "yarl" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/cd/79/a1117c5c5b3d20b59b7c9f6d92c52f4bd32ffd414030c6fd3187778998dc/pangea_sdk-6.10.0.tar.gz", hash = "sha256:58d4b711d84f64188f3eae08213e6abc214e7a30591644b3b67d33b2f5974390", size = 139216, upload-time = "2025-10-29T18:40:12.583Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/27/55/c1ffa6fbd647cd29b55b964c181cdfe866d2b820f3cc5664662f3dad6789/pangea_sdk-6.11.0.tar.gz", hash = "sha256:38a0be4df9dac9ef694a9e51d5c20666874b9b152700d383459a5988f4d9db26", size = 139257, upload-time = "2025-11-04T16:40:43.245Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/b8/8a/52f850c58a1ba3ba73232637b31447801302cf7d7fc1492d6f625910d06b/pangea_sdk-6.10.0-py3-none-any.whl", hash = "sha256:29df77531fe72e3b5d730d270e820fccf45ea59f37d4c90b587213197f93fd36", size = 170730, upload-time = "2025-10-29T18:40:11.31Z" },
+    { url = "https://files.pythonhosted.org/packages/81/ed/0770523f8c766d34022bcb5213c49cbbe6bc06a05ab0e73b724463848874/pangea_sdk-6.11.0-py3-none-any.whl", hash = "sha256:ddf49a98f39ebb5af9614ef5f1e431402bf45c32e87893d38cab6cbe4f6bc6b0", size = 170771, upload-time = "2025-11-04T16:40:42.16Z" },
 ]
 
 [[package]]
