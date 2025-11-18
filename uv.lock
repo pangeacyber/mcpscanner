@@ -1022,7 +1022,7 @@ wheels = [
 
 [[package]]
 name = "mcp"
-version = "1.19.0"
+version = "1.21.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "anyio" },
@@ -1031,15 +1031,18 @@ dependencies = [
     { name = "jsonschema" },
     { name = "pydantic" },
     { name = "pydantic-settings" },
+    { name = "pyjwt", extra = ["crypto"] },
     { name = "python-multipart" },
     { name = "pywin32", marker = "sys_platform == 'win32'" },
     { name = "sse-starlette" },
     { name = "starlette" },
+    { name = "typing-extensions" },
+    { name = "typing-inspection" },
     { name = "uvicorn", marker = "sys_platform != 'emscripten'" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/69/2b/916852a5668f45d8787378461eaa1244876d77575ffef024483c94c0649c/mcp-1.19.0.tar.gz", hash = "sha256:213de0d3cd63f71bc08ffe9cc8d4409cc87acffd383f6195d2ce0457c021b5c1", size = 444163, upload-time = "2025-10-24T01:11:15.839Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/15/bb/147bf5d47b8d6f3fb315204cd2f567b1ad85511acd8d59e85cccf7cce65c/mcp-1.21.2.tar.gz", hash = "sha256:b6497b7f7a77aabe263931a3335956dfd45fe8b1e2168931e455914ba1a7f4c9", size = 470799, upload-time = "2025-11-17T13:56:06.397Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ce/a3/3e71a875a08b6a830b88c40bc413bff01f1650f1efe8a054b5e90a9d4f56/mcp-1.19.0-py3-none-any.whl", hash = "sha256:f5907fe1c0167255f916718f376d05f09a830a215327a3ccdd5ec8a519f2e572", size = 170105, upload-time = "2025-10-24T01:11:14.151Z" },
+    { url = "https://files.pythonhosted.org/packages/67/0f/669ecbe78a0ba192afcc0b026ae62d1005779e91bad27ab9d703401510bf/mcp-1.21.2-py3-none-any.whl", hash = "sha256:59413ef15db757a785e3859548c1a7ffc7be57bf162c3c24afc0e04fd9f4181c", size = 174854, upload-time = "2025-11-17T13:56:04.987Z" },
 ]
 
 [[package]]
@@ -1073,7 +1076,7 @@ requires-dist = [
     { name = "cyclopts", specifier = ">=4.2.1" },
     { name = "fastembed", specifier = ">=0.7.3" },
     { name = "fastmcp", specifier = ">=2.13.0.2" },
-    { name = "mcp", specifier = ">=1.19.0" },
+    { name = "mcp", specifier = ">=1.21.0" },
     { name = "pangea-sdk", specifier = ">=6.10.0" },
     { name = "pydantic", specifier = ">=2.12.3" },
     { name = "pyjson5", specifier = ">=2.0.0" },
@@ -2144,6 +2147,20 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/c2/61/63bd6351bd88e7158380eabf182beb377b53c4812175db3cde82fb2ad16e/pyjson5-2.0.0-cp314-cp314t-win32.whl", hash = "sha256:caeee4168841a4d061f0e33cd162ae45fedbe9be9ed3dbd839d76d7791858dcf", size = 138873, upload-time = "2025-10-02T00:21:56.903Z" },
     { url = "https://files.pythonhosted.org/packages/f6/ee/f856f8e18336a96ad7a7561dc482f776fa3c236ca278820f1ad4d7e04bba/pyjson5-2.0.0-cp314-cp314t-win_amd64.whl", hash = "sha256:7121183c7be324bdb6e824fc047ac29ad676025506e3cdbad6def5c4af9247d4", size = 168332, upload-time = "2025-10-02T00:21:58.038Z" },
     { url = "https://files.pythonhosted.org/packages/62/9d/17ac8aacb439c79a912a57ee105bb060c6c10d40eab587928215e2022e5e/pyjson5-2.0.0-cp314-cp314t-win_arm64.whl", hash = "sha256:f5e151599913b0c6e3bc3e176951f48039457e8a4b14f59c1ffffb8580ab58ea", size = 127386, upload-time = "2025-10-02T00:22:00.217Z" },
+]
+
+[[package]]
+name = "pyjwt"
+version = "2.10.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/e7/46/bd74733ff231675599650d3e47f361794b22ef3e3770998dda30d3b63726/pyjwt-2.10.1.tar.gz", hash = "sha256:3cc5772eb20009233caf06e9d8a0577824723b44e6648ee0a2aedb6cf9381953", size = 87785, upload-time = "2024-11-28T03:43:29.933Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/61/ad/689f02752eeec26aed679477e80e632ef1b682313be70793d798c1d5fc8f/PyJWT-2.10.1-py3-none-any.whl", hash = "sha256:dcdd193e30abefd5debf142f9adfcdd2b58004e644f25406ffaebd50bd98dacb", size = 22997, upload-time = "2024-11-28T03:43:27.893Z" },
+]
+
+[package.optional-dependencies]
+crypto = [
+    { name = "cryptography" },
 ]
 
 [[package]]
