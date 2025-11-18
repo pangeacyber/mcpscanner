@@ -145,6 +145,7 @@ def find_entities(tool: Tool, ai_guard: AIGuard) -> list[str]:
             guard_response.result is None
             or guard_response.result.detectors.pii_entity is None
             or guard_response.result.detectors.pii_entity.data is None
+            or guard_response.result.detectors.pii_entity.data.entities is None
         ):
             return []
 
