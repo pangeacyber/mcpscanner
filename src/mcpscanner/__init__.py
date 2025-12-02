@@ -158,6 +158,7 @@ async def analyze(mcp_server: StdioMCPServer | RemoteMCPServer, ai_guard: AIGuar
     mcp_client = Client(mcp_server.to_transport())
     try:
         async with mcp_client:
+            assert mcp_client.initialize_result is not None
             server_info = mcp_client.initialize_result.serverInfo
             maybe_requires_auth = (
                 not isinstance(mcp_client.transport, StdioTransport)
