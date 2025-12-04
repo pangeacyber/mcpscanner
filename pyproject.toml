@@ -22,7 +22,7 @@ dependencies = [
 
 [dependency-groups]
 dev = [
-    "mypy==1.18.2",
+    "mypy==1.19.0",
     "ruff==0.14.6",
     "scipy-stubs==1.16.3.0",
 ]
