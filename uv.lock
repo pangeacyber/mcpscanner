@@ -2,7 +2,8 @@ version = 1
 revision = 3
 requires-python = ">=3.11"
 resolution-markers = [
-    "python_full_version >= '3.13'",
+    "python_full_version >= '3.14'",
+    "python_full_version == '3.13.*'",
     "python_full_version == '3.12.*'",
     "python_full_version < '3.12'",
 ]
@@ -560,7 +561,7 @@ wheels = [
 
 [[package]]
 name = "fastembed-gpu"
-version = "0.7.3"
+version = "0.7.4"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "huggingface-hub" },
@@ -574,9 +575,9 @@ dependencies = [
     { name = "tokenizers" },
     { name = "tqdm" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/de/b0/9d528c2dfc319d218a9829b9018e480cd23d620492636817321ad0fb5cce/fastembed_gpu-0.7.3.tar.gz", hash = "sha256:2ed106290677b4cc93e3a8467fd3fbcbf288c1e11fa02cebed67f02a7ccb2427", size = 66636, upload-time = "2025-08-29T11:20:05.13Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/fd/7e/5647b226baf7abe379e10ed46fb6de47a5838a96e50baa2be855510d792f/fastembed_gpu-0.7.4.tar.gz", hash = "sha256:f0a21792093b355a234685ad48cc16a25fbf091498cf114065ee62c05ada1a05", size = 68862, upload-time = "2025-12-05T12:08:43.517Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/48/2b/8b1788989dcf9394195a43b6b5ee1b19ed5e628f9aa3c92b46946bca5748/fastembed_gpu-0.7.3-py3-none-any.whl", hash = "sha256:762385f788b55d05ccbb663516d127194d6567426916a7d8fc63378ffcfcdc41", size = 105371, upload-time = "2025-08-29T11:20:03.707Z" },
+    { url = "https://files.pythonhosted.org/packages/2b/c9/0aecd6914a3b4d7b3431c6d9e5cc7111dfb658cc32bb56e65e6add9e930c/fastembed_gpu-0.7.4-py3-none-any.whl", hash = "sha256:970881d22788165065fdb3873846304a27a5c8ff771c656fa7ff38b7a1d22274", size = 108539, upload-time = "2025-12-05T12:08:42.208Z" },
 ]
 
 [[package]]
@@ -1091,7 +1092,7 @@ dev = [
     { name = "ruff", specifier = "==0.14.6" },
     { name = "scipy-stubs", specifier = "==1.16.3.2" },
 ]
-gpu = [{ name = "fastembed-gpu", specifier = ">=0.7.3" }]
+gpu = [{ name = "fastembed-gpu", specifier = ">=0.7.4" }]
 
 [[package]]
 name = "mdurl"
