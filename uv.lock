@@ -1059,7 +1059,7 @@ gpu = [
 [package.metadata]
 requires-dist = [
     { name = "cyclopts", specifier = ">=4.3.0" },
-    { name = "fastembed", specifier = ">=0.7.3" },
+    { name = "fastembed", specifier = ">=0.7.4" },
     { name = "fastmcp", specifier = "~=2.13.3" },
     { name = "mcp", specifier = ">=1.22.0" },
     { name = "pangea-sdk", specifier = ">=6.13.0" },
